@@ -40,3 +40,38 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Node.js
+node_modules/
+
+# Compiled output
+dist/
+tmp/
+out-tsc/
+
+# Logs
+logs/
+*.log
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+bower_components/
+jspm_packages/
+
+# TypeScript
+*.tsbuildinfo
+
+# IDEs and editors
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
