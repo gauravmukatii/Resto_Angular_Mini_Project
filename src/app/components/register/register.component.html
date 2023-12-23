@@ -1,1 +1,23 @@
-<p>register works!</p>
+<h2>Register New User</h2>
+<div *ngIf="alert" class="alert alert-success" role="alert">
+    Registration successful! You can now log in.
+    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+<form [formGroup]="register" (ngSubmit)="collection()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" formControlName="name" placeholder="Enter Name">
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Email Id</label>
+        <input type="email" class="form-control" formControlName="email" placeholder="Enter Your Email Id">
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Email Id</label>
+        <input type="password" class="form-control" formControlName="pwd" placeholder="Create Password">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Register</button>
+  </form>

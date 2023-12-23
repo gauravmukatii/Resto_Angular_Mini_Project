@@ -2,35 +2,37 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RestoService {
+  url = 'http://localhost:8000/restaurants';
+  rootUrl = 'http://localhost:8000';
 
-  url ="http://localhost:8000/restaurants"
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-    
-  
   getList() {
-     return this.http.get(this.url);
+    return this.http.get(this.url);
   }
 
-  addRestaurant(restaurantData: any){
+  addRestaurant(restaurantData: any) {
     return this.http.post(this.url, restaurantData);
   }
 
-  deleteRestaurant(itemId: any){
+  deleteRestaurant(itemId: any) {
     return this.http.delete(this.url + '/' + itemId, itemId);
   }
 
-  getRestaurant(itemId: any){
+  getRestaurant(itemId: any) {
     return this.http.get(this.url + '/' + itemId, itemId);
   }
 
-  updateRestaurant(itemId: any, data: any){
+  updateRestaurant(itemId: any, data: any) {
     console.error(data);
     console.error(itemId);
     return this.http.put(this.url + '/' + itemId, data);
   }
 
+  registerUser(register: any) {
+    return this.http.post(this.rootUrl + '/users', register);
+  }
 }
