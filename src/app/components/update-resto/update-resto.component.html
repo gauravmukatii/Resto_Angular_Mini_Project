@@ -1,7 +1,6 @@
 <h2>Edit Restaurant</h2>
-<!-- <div *ngIf="successMsg" class="alert alert-success" role="alert">
-    {{ successMsg }}
-  </div> -->
+<div *ngIf="updateSuccess" class="alert alert-success" role="alert">
+  Restaurant updated Successfully</div>
 <form [formGroup]="editRestaurantForm" (ngSubmit)="collection()">
     <div class="mb-3">
       <label for="name" class="form-label">Restaurant Name</label>

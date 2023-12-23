@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { RestoService } from 'src/app/service/resto.service';
@@ -10,13 +10,15 @@ import { RestoService } from 'src/app/service/resto.service';
 })
 export class UpdateRestoComponent implements OnInit {
 
+  updateSuccess: boolean = false;
+
   editRestaurantForm= new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
     address: new FormControl('')
 });
 
-  constructor(private router: ActivatedRoute, private resto:RestoService) { }
+  constructor(private router: ActivatedRoute, private resto:RestoService, private cdr:ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
@@ -34,7 +36,13 @@ export class UpdateRestoComponent implements OnInit {
     }
 
     collection(){
-      console.warn("item", this.editRestaurantForm);
+      const restaurantId = this.router.snapshot.params['id'];
+      this.resto.updateRestaurant(restaurantId, this.editRestaurantForm.value).subscribe(
+        (result)=>{
+              console.log(result);
+              this.updateSuccess = true;
+              this.cdr.detectChanges();
+      });
     }
 
   }

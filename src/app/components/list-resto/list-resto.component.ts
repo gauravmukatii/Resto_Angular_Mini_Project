@@ -7,6 +7,8 @@ import { RestoService } from 'src/app/service/resto.service';
   styleUrls: ['./list-resto.component.css']
 })
 export class ListRestoComponent implements OnInit {
+
+  deleteSuccess!: string;
   
   constructor(private resto:RestoService) { }
   collection: any[] = [];
@@ -20,6 +22,7 @@ export class ListRestoComponent implements OnInit {
     console.warn(id);
     this.resto.deleteRestaurant(id).subscribe((response)=>{
       console.warn(response);
+      this.deleteSuccess = "Restaurant deleted successfully";
       this.collection = this.collection.filter(item => item.id !== id);
     });
   }

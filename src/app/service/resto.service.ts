@@ -27,5 +27,10 @@ export class RestoService {
     return this.http.get(this.url + '/' + itemId, itemId);
   }
 
+  updateRestaurant(itemId: any, data: any){
+    console.error(data);
+    console.error(itemId);
+    return this.http.put(this.url + '/' + itemId, data);
+  }
 
 }
